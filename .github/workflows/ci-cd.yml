@@ -32,5 +32,5 @@ jobs:
 
       - name: Tag and Push Docker Image
         run: |
-          docker tag cicd:latest pramod1307/cicd:latest
-          docker push pramod1307/cicd:latest
+          docker tag cicd:latest pramod13071626/cicd:latest
+          docker push pramod13071626/cicd:latest
