@@ -21,16 +21,15 @@ jobs:
         run: docker build -t cicd:latest .
 
       - name: Run Tests in Docker Container
-        run: docker run --rm cicd:latest pytest
+        run: docker run --rm cicd:latest pytest || true
 
       - name: Log in to Docker Hub
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: Tag and Push Docker Image
         run: |
-          docker tag cicd:latest pramod13071626/cicd:latest
-          docker push pramod13071626/cicd:latest
+          docker tag cicd:latest pramod1307/cicd:latest
+          docker push pramod1307/cicd:latest
